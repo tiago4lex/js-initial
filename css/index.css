@@ -36,10 +36,12 @@ header .container:before{
 	width: 60%;
 	height: 100%;
 	margin: 0 auto;
+	padding: 10px;
+
 }
 
 section{
-	margin: 2em 0;
+	margin: 2em;
 	overflow: hidden;
 }
 
@@ -131,4 +133,9 @@ button[disabled=disabled], button:disabled {
 
 .campo-invalido{
 	border: 1px solid red;
+}
+
+.paciente-invalido {
+    background-color: lightcoral; /* Ou outra cor de sua escolha */
+    color: white; /* Para melhorar o contraste do texto */
 }
