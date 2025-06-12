@@ -4,11 +4,6 @@ botaoAdicionar.addEventListener("click", function (event) {
   event.preventDefault();
   var form = document.querySelector("#form-adiciona");
 
-  // var nome = form.nome.value;
-  // var peso = form.peso.value;
-  // var altura = form.altura.value;
-  // var gordura = form.gordura.value;
-
   var paciente = {
     nome: form.nome.value,
     peso: form.peso.value,
@@ -17,33 +12,13 @@ botaoAdicionar.addEventListener("click", function (event) {
     imc: calcularImc(form.peso.value, form.altura.value),
   };
 
-  var pacienteTr = document.createElement("tr");
-  pacienteTr.classList.add("paciente");
-
-  var nomeTd = document.createElement("td");
-  var pesoTd = document.createElement("td");
-  var alturaTd = document.createElement("td");
-  var gorduraTd = document.createElement("td");
-  var imcTd = document.createElement("td");
-
-  nomeTd.textContent = paciente.nome;
-  pesoTd.textContent = paciente.peso;
-  alturaTd.textContent = paciente.altura;
-  gorduraTd.textContent = paciente.gordura;
-  imcTd.textContent = paciente.imc;
-
-  pacienteTr.appendChild(nomeTd);
-  pacienteTr.appendChild(pesoTd);
-  pacienteTr.appendChild(alturaTd);
-  pacienteTr.appendChild(gorduraTd);
-  pacienteTr.appendChild(imcTd);
-
   var erros = validaPaciente(paciente);
   if (erros.length > 0) {
     exibeMensagensErros(erros);
     return;
   }
 
+  var pacienteTr = montaTr(paciente);
   var tabela = document.querySelector("#tabela-pacientes");
   tabela.appendChild(pacienteTr);
 
@@ -92,4 +67,23 @@ function exibeMensagensErros(erros) {
     li.textContent = element;
     ul.appendChild(li);
   });
+}
+
+function montaTd(dado) {
+  var td = document.createElement("td");
+  td.textContent = dado;
+  return td;
+}
+
+function montaTr(paciente) {
+  var pacienteTr = document.createElement("tr");
+  pacienteTr.classList.add("paciente");
+
+  pacienteTr.appendChild(montaTd(paciente.nome));
+  pacienteTr.appendChild(montaTd(paciente.peso));
+  pacienteTr.appendChild(montaTd(paciente.altura));
+  pacienteTr.appendChild(montaTd(paciente.gordura));
+  pacienteTr.appendChild(montaTd(paciente.imc));
+
+  return pacienteTr;
 }
