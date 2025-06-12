@@ -15,13 +15,13 @@ for (let i = 0; i < pacientes.length; i++) {
   var pesoValido = validaPeso(peso);
   var alturaValida = validaAltura(altura);
 
-  if (peso <= 0 || peso > 600 || isNaN(peso)) {
+  if (!pesoValido) {
     console.log("Peso inválido para o paciente " + (i + 1));
     pesoValido = false;
     paciente.classList.add("paciente-invalido"); // Adiciona classe para estilização
   }
 
-  if (altura <= 0 || altura > 3.0 || isNaN(altura)) {
+  if (!alturaValida) {
     console.log("Altura inválida para o paciente " + (i + 1));
     alturaValida = false;
     paciente.classList.add("paciente-invalido"); // Adiciona classe para estilização
