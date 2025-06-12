@@ -136,7 +136,7 @@ button[disabled=disabled], button:disabled {
 }
 
 .paciente-invalido {
-    background-color: lightcoral; /* Ou outra cor de sua escolha */
+    background-color: lightcoral;
     color: white; /* Para melhorar o contraste do texto */
 }
 
